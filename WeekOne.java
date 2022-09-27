@@ -1,6 +1,5 @@
 
 import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
 
 public class WeekOne {
@@ -11,7 +10,7 @@ public class WeekOne {
         //countChar();
 
         //2.string(대소문자 변환)
-        changeCase();
+        //changeCase();
 
         //3.string(문장 속 단어)
         //findLongestWord();
@@ -29,7 +28,19 @@ public class WeekOne {
         //isPalindrome();
 
         //8.string(유효한 팰린드롬)
-        
+        //isPalindromeIgnoreNotEn();
+
+        //9.string(숫자만 추출)
+        //findDigit();
+
+        //10.string (가장 짧은 문자거리)
+        //shortestDistance();
+
+        //11.string(문자열 압축)
+        //compressString();
+
+        //12.string(암호)
+        decryptionStr();
     }
 
     public static void countChar(){
@@ -147,8 +158,14 @@ public class WeekOne {
     public static void deduplication(){
         try(Scanner s = new Scanner(System.in)){
             String str = s.nextLine();
-            List<String> result = Arrays.asList(str.split(""));
-            result.stream().distinct().forEach(val -> System.out.println(val));
+            // List<String> result = Arrays.asList(str.split(""));
+            // result.stream().distinct().forEach(val -> System.out.println(val));
+            String res = str.chars().distinct()
+                        .collect(StringBuilder::new,
+                        StringBuilder::appendCodePoint,
+                        StringBuilder::append)
+                        .toString();
+            System.out.println(res);
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -171,7 +188,116 @@ public class WeekOne {
 
     public static void isPalindromeIgnoreNotEn(){
         try(Scanner s = new Scanner(System.in)){
+            String str = s.nextLine();
+            // String strEn = str.chars().filter(ch -> !Character.isDigit(ch))
+            //             .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
+            //             .toString();
+            String[] strArray = str.chars()
+                                        .filter(ch -> Character.isAlphabetic(ch))
+                                        .mapToObj(c -> (char)c+"")
+                                        .toArray(String[]::new);
+            for(int i=0 ; i < strArray.length/2 ; i ++){
+                System.out.println(strArray[i]);
+                if(!strArray[i].equalsIgnoreCase(strArray[strArray.length -i -1])){
+                    System.out.println("NO");
+                    return;
+                }
+            }
+            System.out.println("YES");
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
 
+    public static void findDigit(){
+        try(Scanner s = new Scanner(System.in)){
+            String str = s.nextLine();
+            String result = str.chars()
+                                .filter(c -> Character.isDigit(c))
+                                .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
+                                .toString();
+            System.out.println(result);
+        }catch(Exception e ){
+            e.printStackTrace();
+        }
+    }
+
+    public static void shortestDistance(){
+        try(Scanner s = new Scanner(System.in)){
+            String[] strArray = s.nextLine().split("");
+            String t = s.nextLine();
+
+            for(int i=0; i < strArray.length; i++){
+                int leftDist = 100;
+                int rightDist = 100;
+                if(strArray[i].equals(t)){
+                    System.out.print("0 ");
+                }else{
+                    for(int j=1; j<=i ; j++){
+                        if(strArray[i-j].equals(t)){
+                            leftDist = j;
+                            break;
+                        }
+                    }
+                    for(int j=1; j < strArray.length - i ; j++){
+                        if(strArray[i+j].equals(t)){
+                            rightDist = j;
+                            break;
+                        }
+                    }
+                    if(leftDist <= rightDist ) System.out.print(leftDist + " ");
+                    else System.out.print(rightDist + " ");
+                }
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
+
+    public static void compressString(){
+        try(Scanner s = new Scanner(System.in)){
+            String[] strArray = s.nextLine().split("");
+            String result = "";
+            String tmpStr = "";
+            int count = 1;
+            for(String str : strArray){
+                if("".equals(result)){
+                    result = str;
+                    tmpStr = str;
+                }else{
+                    if(tmpStr.equals(str)){
+                        count++;
+                    }else{
+                        if(count > 1){
+                            result += count+"";
+                        }
+                        result += str;
+                        tmpStr = str;
+                        count = 1;
+                    }
+                }
+            }
+            if(count > 1){
+                result += count+"";
+            }
+            System.out.println(result);
+        }
+    }
+
+    public static void decryptionStr(){
+        try(Scanner s = new Scanner(System.in)){
+            int count = s.nextInt();
+            String str = s.next();
+            String[] strArray = new String[count];
+            for(int i=0; i < count ; i++){
+                strArray[i] = str.substring(i*7,(i+1)*7);
+            }
+            Arrays.stream(strArray)
+                        .forEach(ss -> {
+                            ss = ss.replaceAll("\\#", "1").replaceAll("\\*", "0");
+                            System.out.print(Character.valueOf((char)Integer.parseInt(ss,2)) );
+                        });
         }catch(Exception e){
             e.printStackTrace();
         }
