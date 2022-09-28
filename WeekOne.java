@@ -7,7 +7,7 @@ public class WeekOne {
 
     public static void main(String[] args) {
         //1.string(문자 찾기)
-        //countChar();
+        countChar();
 
         //2.string(대소문자 변환)
         //changeCase();
@@ -40,19 +40,17 @@ public class WeekOne {
         //compressString();
 
         //12.string(암호)
-        decryptionStr();
+        //decryptionStr();
     }
 
     public static void countChar(){
         try (Scanner s = new Scanner(System.in)) {
             String str = s.nextLine();
             String findChar = s.next();
-            long count = str.chars().filter(val ->  val == findChar.charAt(0)).count();
-            // for(String strChar : str.split("")){
-            //     if(strChar.equalsIgnoreCase(findChar)){
-            //         count++;
-            //     }
-            // }
+            long count = str.chars()
+                            .map(Character::toLowerCase)
+                            .filter(val ->  val == findChar.charAt(0))
+                            .count();
             System.out.println("count : " + count);
         } catch (Exception e){
             e.printStackTrace();
@@ -131,7 +129,6 @@ public class WeekOne {
     public static void reverseOnlyEn(){
         try(Scanner s = new Scanner(System.in)){
             String str = s.nextLine();
-            System.out.println("input : " + str);
             char[] cArray = str.toCharArray();
             char[] result = new char[cArray.length];
             for(int i = 0 ; i < cArray.length ; i++){
@@ -149,7 +146,7 @@ public class WeekOne {
                     }
                 }
             }
-            System.out.println("result : " + String.valueOf(result));
+            System.out.println(String.valueOf(result));
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -224,8 +221,8 @@ public class WeekOne {
 
     public static void shortestDistance(){
         try(Scanner s = new Scanner(System.in)){
-            String[] strArray = s.nextLine().split("");
-            String t = s.nextLine();
+            String[] strArray = s.next().split("");
+            String t = s.next();
 
             for(int i=0; i < strArray.length; i++){
                 int leftDist = 100;
