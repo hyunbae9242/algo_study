@@ -10,7 +10,7 @@ public class WeekTwo {
         //printWinner();
 
         //5. 소수 (에라토스테네스 체)
-        //countPrimeNumber();
+        countPrimeNumber();
 
         //7. 점수계산
         //calculatePoint();
@@ -19,7 +19,7 @@ public class WeekTwo {
         //maxSum();
 
         //11. 임시반장 정하기
-        findInsider();
+        //findInsider();
     }
 
     public static void printGreatThan(){
@@ -108,8 +108,6 @@ public class WeekTwo {
                     a[i][j] = s.nextInt();
                 }
             }
-
-
             int f = 0;
             int b = 0;
             for(int i=0 ; i<n ; i++){
@@ -150,8 +148,9 @@ public class WeekTwo {
                 //j => 학년
                 for(int j=0 ; j<5 ; j++){
                     for(int k=0 ; k<n ; k++){
-                        if(i != k && a[j][i] == a[j][k]){
+                        if(a[j][i] == a[j][k]){
                             p++;
+                            
                         }
                     }
                 }
