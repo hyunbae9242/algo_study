@@ -8,6 +8,11 @@ public class WeekFour {
         //2. 공통원소 구하기
         //printCommonGround();
         //3. 최대 매출
+
+        //4. 
+        //sumCase();
+
+        longistDist();
     }
 
     //1.두 배열 합치기
@@ -150,6 +155,70 @@ public class WeekFour {
                 }
             }
             System.out.println(count);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    //5. 연속된 자연수의 합
+    public static void sumCase(){
+        try(Scanner s = new Scanner(System.in)){
+            int n = s.nextInt();
+
+            int fNum = 1;
+            int lNum = 1;
+            int sum = 0;
+            int count = 0;
+            while(lNum <= n/2 + 2){
+                if(sum < n){
+                    sum += lNum;
+                    lNum++;
+                }else if(sum > n){
+                    sum -= fNum;
+                    fNum++;
+                }
+
+                if(sum == n){
+                    count++;
+                    sum -= fNum;
+                    fNum++;
+                }
+            }
+            System.out.println(count);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    //6. 최대 길이 연속부분수열
+    public static void longistDist(){
+        try(Scanner s = new Scanner(System.in)){
+            int n = s.nextInt();
+            int k = s.nextInt();
+            int[] nArray = new int[n];
+            for(int i=0; i<n ; i++){
+                nArray[i] = s.nextInt();
+            }
+
+            int max = 0;
+            for(int i=0; i<n ; i++){
+                int cCount = 0;
+                int length = 0;
+                if(max < n-i){
+                    for(int j=i ; j<n ; j++){
+                        if(nArray[j] == 1) {
+                            length++;
+                        }else if(nArray[j] == 0){
+                            if(cCount == k) break;
+                            cCount++;
+                            length++;
+                        }
+                    }
+                }
+                if(max < length) max = length;
+                if(max > n-i) break;
+            }
+            System.out.println(max);
         }catch(Exception e){
             e.printStackTrace();
         }
