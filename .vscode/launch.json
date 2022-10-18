@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch WeekFour",
+            "request": "launch",
+            "mainClass": "WeekFour",
+            "projectName": "study_18a3d854"
+        },
+        {
+            "type": "java",
             "name": "Launch WeekThree",
             "request": "launch",
             "mainClass": "WeekThree",

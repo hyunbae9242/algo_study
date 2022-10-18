@@ -35,7 +35,7 @@ public class WeekThree {
         }
     }
 
-    //2.피보나치 수열
+    //3.피보나치 수열
     public static void fibonacciNumbers(){
         try(Scanner s = new Scanner(System.in)){
             int n = s.nextInt();
@@ -55,7 +55,7 @@ public class WeekThree {
     }
 
 
-    //3. 뒤집은 소수
+    //5. 뒤집은 소수
     public static void reversePrimeNumber(){
         try(Scanner s = new Scanner(System.in)){
             int n = s.nextInt();
