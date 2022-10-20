@@ -204,15 +204,13 @@ public class WeekFour {
             for(int i=0; i<n ; i++){
                 int cCount = 0;
                 int length = 0;
-                if(max < n-i){
-                    for(int j=i ; j<n ; j++){
-                        if(nArray[j] == 1) {
-                            length++;
-                        }else if(nArray[j] == 0){
-                            if(cCount == k) break;
-                            cCount++;
-                            length++;
-                        }
+                for(int j=i ; j<n ; j++){
+                    if(nArray[j] == 1) {
+                        length++;
+                    }else if(nArray[j] == 0){
+                        if(cCount == k) break;
+                        cCount++;
+                        length++;
                     }
                 }
                 if(max < length) max = length;
