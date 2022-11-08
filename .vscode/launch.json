@@ -6,6 +6,27 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch WeekSix",
+            "request": "launch",
+            "mainClass": "WeekSix",
+            "projectName": "study_18a3d854"
+        },
+        {
+            "type": "java",
+            "name": "Launch WeekSeven",
+            "request": "launch",
+            "mainClass": "WeekSeven",
+            "projectName": "study_18a3d854"
+        },
+        {
+            "type": "java",
+            "name": "Launch Test",
+            "request": "launch",
+            "mainClass": "Test",
+            "projectName": "study_18a3d854"
+        },
+        {
+            "type": "java",
             "name": "Launch Weekfive",
             "request": "launch",
             "mainClass": "Weekfive",
