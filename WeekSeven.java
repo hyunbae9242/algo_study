@@ -1,8 +1,9 @@
-import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.Map;
 import java.util.Queue;
 import java.util.Scanner;
 import java.util.Stack;
+import java.util.Map.Entry;
 
 public class WeekSeven {
     public static void main(String[] args) {
